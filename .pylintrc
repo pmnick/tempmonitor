@@ -61,6 +61,7 @@ disable=C0111, # docstring missing
         E1101, # module not found
         C0326, # no space allowed before bracket
         E1120, # no value for argument (when using deconstruction errors)
+        C0325, # unnecessary parens after print keyword
         print-statement,
         parameter-unpacking,
         unpacking-in-except,
