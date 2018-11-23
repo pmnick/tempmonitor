@@ -38,8 +38,8 @@ settings_file = 'logs/temp_log_{}-settings.txt'.format(start_time.strftime('%Y%m
 # log run parameters
 with open(settings_file, 'w') as f:
     f.write('buffer_size:\t{}\n'.format(bsize))
-    f.write('sample_period:\t{}\n'.format(sample_period))
-    f.write('read_period:\t{}\n'.format(read_period))
+    f.write('sample_period:\t{} hh:mm:ss\n'.format(sample_period))
+    f.write('read_period:\t{} seconds\n'.format(read_period))
     f.write('log_file:\t{}\n'.format(log_file))
 
 # monitor temperature
