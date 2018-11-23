@@ -31,6 +31,7 @@ buf = []
 bsize = 10
 sample_period = timedelta(seconds=10)
 read_period = 0.2/10 * sample_period.total_seconds() # sample is average of 10 readings during last 20% of sample period
+log_file = 'temp_log_{}.csv'.format(datetime.now().isoformat())
 
 try:
     reading = to_C(round(1.0*read_adc(0)/65535*3.3, 6))
@@ -43,7 +44,7 @@ try:
 
         now = datetime.now()
         if now - last_entry > sample_period:
-            with open('temp_log_2.txt', 'a') as f:
+            with open(log_file, 'a') as f:
                 f.write('{}, {}\n'.format(now.isoformat(), sum(buf)/len(buf)))
             last_entry = now
     sleep(read_period)
