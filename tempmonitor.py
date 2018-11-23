@@ -32,8 +32,8 @@ bsize = 10
 sample_period = timedelta(seconds=10)
 read_period = 0.2/bsize * sample_period.total_seconds() # sample is average of buffer filled over 20% of sample period
 start_time = datetime.now()
-log_file = 'temp_log_{}.csv'.format(start_time.strftime('%Y%m%d_%H-%M-%S'))
-settings_file = 'temp_log_{}-settings.txt'.format(start_time.strftime('%Y%m%d_%H-%M-%S'))
+log_file = 'logs/temp_log_{}.csv'.format(start_time.strftime('%Y%m%d_%H-%M-%S'))
+settings_file = 'logs/temp_log_{}-settings.txt'.format(start_time.strftime('%Y%m%d_%H-%M-%S'))
 
 # log run parameters
 with open(settings_file, 'w') as f:
