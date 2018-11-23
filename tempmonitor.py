@@ -1,5 +1,3 @@
-#this is a test of the 16 bit adc
-
 import RPi.GPIO as GPIO
 import spidev
 from time import sleep
@@ -20,7 +18,7 @@ def read_adc(chan):
     return adcout_0
 
 # convert voltage to degrees C (this is based on a quick and dirty two point measurement using cold and hot water)
-# temp sensor is NPN transistor, measuring voltage drop between emitter and drain as described here:
+# temp sensor is NPN transistor, measuring voltage drop between base and emitter as described here:
 # https://www.sensortips.com/featured/get-temperature-sensor-transistor/
 # current source is actually a voltage divider from 12v to about 1.15 v, actual conversion is probably nonlinear
 # because this is a very non-ideal current source. TODO: find calibration curve using 4+ points
