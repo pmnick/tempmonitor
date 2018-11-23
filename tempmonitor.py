@@ -30,9 +30,19 @@ def to_C(voltage):
 buf = []
 bsize = 10
 sample_period = timedelta(seconds=10)
-read_period = 0.2/10 * sample_period.total_seconds() # sample is average of 10 readings during last 20% of sample period
-log_file = 'temp_log_{}.csv'.format(datetime.now().isoformat())
+read_period = 0.2/bsize * sample_period.total_seconds() # sample is average of buffer filled over 20% of sample period
+start_time = datetime.now()
+log_file = 'temp_log_{}.csv'.format(start_time.strftime('%Y%m%d_%H-%M-%S'))
+settings_file = 'temp_log_{}-settings.txt'.format(start_time.strftime('%Y%m%d_%H-%M-%S'))
 
+# log run parameters
+with open(settings_file, 'w') as f:
+    f.write('buffer_size:\t{}\n'.format(bsize))
+    f.write('sample_period:\t{}\n'.format(sample_period))
+    f.write('read_period:\t{}\n'.format(read_period))
+    f.write('log_file:\t{}\n'.format(log_file))
+
+# monitor temperature
 try:
     reading = to_C(round(1.0*read_adc(0)/65535*3.3, 6))
     print('current temp: {}'.format(reading))
